@@ -20,6 +20,6 @@ namespace GigHub.ViewModels
 
         public List<Genre> Genres { get; set; }
 
-        public DateTime DateTime => DateTime.Parse($"{Date}{Time}");
+        public DateTime DateTime => DateTime.Parse($"{Date} {Time}");
     }
 }

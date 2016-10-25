@@ -194,21 +194,39 @@
     <Compile Include="Migrations\201610241505023_AddForeignKeyPropertiesToGig.Designer.cs">
       <DependentUpon>201610241505023_AddForeignKeyPropertiesToGig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610251350474_GigValidationRulesChanged.cs" />
+    <Compile Include="Migrations\201610251350474_GigValidationRulesChanged.Designer.cs">
+      <DependentUpon>201610251350474_GigValidationRulesChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610251357202_GigValidationRulesChanged1.cs" />
+    <Compile Include="Migrations\201610251357202_GigValidationRulesChanged1.Designer.cs">
+      <DependentUpon>201610251357202_GigValidationRulesChanged1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
+    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\ForgotViewModel.cs" />
     <Compile Include="ViewModels\GigFormViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\ValidTime.cs" />
+    <Compile Include="ViewModels\VerifyCodeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -289,6 +307,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610241505023_AddForeignKeyPropertiesToGig.resx">
       <DependentUpon>201610241505023_AddForeignKeyPropertiesToGig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610251350474_GigValidationRulesChanged.resx">
+      <DependentUpon>201610251350474_GigValidationRulesChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610251357202_GigValidationRulesChanged1.resx">
+      <DependentUpon>201610251357202_GigValidationRulesChanged1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

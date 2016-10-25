@@ -1,9 +1,9 @@
 ﻿using GigHub.Models;
+using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using GigHub.ViewModels;
 
 namespace GigHub.Controllers
 {
@@ -40,7 +40,7 @@ namespace GigHub.Controllers
             var gig = new Gig
             {
                 ArtistId = User.Identity.GetUserId(),
-                DateTime = DateTime.Parse($"{viewModel.Date}{viewModel.Time}"),
+                DateTime = DateTime.Parse($"{viewModel.Date} {viewModel.Time}"),
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue
             };
