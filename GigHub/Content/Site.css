@@ -30,6 +30,14 @@ span.field-validation-error {
     font-weight: bold;
 }
 
+.voffset{ margin-top: 2px;}
+.voffset1{ margin-top: 5px;}
+.voffset2{ margin-top: 10px;}
+.voffset3{ margin-top: 20px;}
+.voffset4{ margin-top: 40px;}
+.voffset5{ margin-top: 80px;}
+
+
 /*Bootstrap Overrides*/
 .navbar-inverse {
     background-color: #ff4342;
@@ -96,8 +104,8 @@ h6,
 }
 
 .btn {
-    font-size: 17px;
-    padding: 7px 20px;
+    /*font-size: 17px;
+    padding: 7px 20px;*/
     -ms-border-radius: 9px;
     border-radius: 9px;
 }
@@ -149,4 +157,14 @@ h6,
 
 .gigs > li .details .genre {
     font-size: 15px;
+}
+
+
+.gigs > li .actions {
+    font-size: 15px;
+    display: none;
+}
+
+.gigs > li:hover .actions {
+    display: block;
 }
