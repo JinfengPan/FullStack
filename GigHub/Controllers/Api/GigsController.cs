@@ -1,6 +1,6 @@
 ﻿using GigHub.Models;
 using Microsoft.AspNet.Identity;
-using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 
@@ -21,6 +21,7 @@ namespace GigHub.Controllers.Api
         {
             var userId = User.Identity.GetUserId();
             var gig = _context.Gigs
+                .Include(g => g.Attendances.Select(a =>a.Attendee))
                 .Single(g => g.Id == id 
                 && g.ArtistId == userId
                 );
@@ -29,30 +30,7 @@ namespace GigHub.Controllers.Api
             if (gig.IsCanceled)
                 return NotFound();
 
-            gig.IsCanceled = true;
-
-            //创建一个通知
-            var notification = new Notification
-            {
-                DateTime = DateTime.Now,
-                Gig = gig,
-                Type = NotificationType.GigCanceled
-            };
-
-            var attendees = _context.Attendances.Where(a => a.GigId == gig.Id)
-                .Select(a => a.Attendee).ToList();
-
-            foreach (var attendee in attendees)
-            {
-                //创建通知与参会人的"关系"
-                var userNotification = new UserNotification
-                {
-                    User = attendee,
-                    Notification = notification
-                };
-
-                _context.UserNotifications.Add(userNotification);
-            }
+            gig.Cancel();
 
             _context.SaveChanges();
 
