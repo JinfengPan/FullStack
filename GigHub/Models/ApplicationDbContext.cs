@@ -9,6 +9,8 @@ namespace GigHub.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<UserNotification> UserNotifications { get; set; }
         public DbSet<Attendance> Attendances
         {
             get;
@@ -43,6 +45,12 @@ namespace GigHub.Models
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.Followees)
                 .WithRequired(f => f.Follower)
+                .WillCascadeOnDelete(false);
+
+
+            modelBuilder.Entity<UserNotification>()
+                .HasRequired(n => n.User)
+                .WithMany()
                 .WillCascadeOnDelete(false);
             base.OnModelCreating(modelBuilder);
         }
