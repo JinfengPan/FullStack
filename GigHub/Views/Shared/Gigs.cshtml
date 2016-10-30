@@ -4,6 +4,17 @@
     ViewBag.Title = "title";
 }
 <h1>@Model.Heading</h1>
+@using (Html.BeginForm("Search", "Gigs"))
+{
+    <div class="form-group">
+        <div class="input-group" id="searchGigs">
+            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control" })
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+        </div>
+    </div>
+}
 <ul class="gigs voffset4">
     @foreach (var gig in Model.UpcomingGigs)
     {
@@ -33,10 +44,29 @@
                 </span>
                 @if (Model.ShowActions && !gig.IsCanceled)
                 {
-                    <button data-newGig-id="@gig.Id" class="btn btn-sm btn-default pull-right js-toggle-attendance">Going ?</button>
+                    <button data-gig-id="@gig.Id" class="btn btn-sm btn-default pull-right js-toggle-attendance">Going ?</button>
                 }
 
             </div>
         </li>
     }
 </ul>
+
+@section scripts{
+ <script>
+    $(function() {
+        $('.js-toggle-attendance').click(function (e) {
+            var button = $(e.target);
+            $.post("/api/attendances", {gigId: button.attr('data-gig-id')})
+                .done(function() {
+                    button
+                        .removeClass("btn-default")
+                        .addClass("btn-info")
+                        .text("Going");
+                }).fail(function() {
+                    alert("something failed!");
+                });
+        });
+    });
+</script>   
+}
