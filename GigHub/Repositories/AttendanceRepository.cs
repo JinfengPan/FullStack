@@ -14,6 +14,17 @@ namespace GigHub.Repositories
             _context = context;
         }
 
-      
+        public IEnumerable<Attendance> GetFutureAttendaces(string userId)
+        {
+            return _context.Attendances
+                .Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
+                .ToList();
+        }
+
+        internal object GetAttendace(int gigId, string userId)
+        {
+            return _context.Attendances
+                .SingleOrDefault(a => a.GigId == gigId && a.AttendeeId == userId);
+        }
     }
 }
