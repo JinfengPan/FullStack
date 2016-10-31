@@ -7,6 +7,10 @@ namespace GigHub
         // 有关绑定的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/scripts/app/services/attendanceService.js",
+                "~/Scripts/app/controllers/gigsController.js",
+                "~/scripts/app/app.js"));
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/underscore-min.js",
